@@ -1,0 +1,28 @@
+header {
+  background: lightgray;
+  padding: 10px;
+}
+
+#output {
+  padding: 7px;
+  height: 20px;
+  background: #444;
+  vertical-align: top;
+  overflow: auto;
+
+}
+
+#logo {
+    margin: 0px 10px 10px 10px;
+    vertical-align: top;
+
+    
+}
+
+#train {
+      margin: 0px 10px 10px 10px;
+      position: absolute;
+      right: 10px;
+      height: 150px;
+
+}
