@@ -165,9 +165,9 @@ URL=SERVER+’/’+PROJECT+’AlCu_pvMn_pv/T0001.A2BC/’
 
 var serverStr = "http://aflowlib.duke.edu";	  // # server name
 var projectStr = "AFLOWDATA/LIB3_RAW/";	  // # project name
-// #URL=SERVER+’/’+PROJECT	# project-layer
-// #URL=SERVER+’/’+PROJECT+’AlCu_pvMn_pv/’	# set-layer
-var urlStr = serverStr + "/" + projectStr + "AlCu_pvMn_pv/T0001.A2BC/";
+// var urlStr = serverStr + "/" + projectStr                               // project layer
+// var urlStr = serverStr + "/" + projectStr + "AlCu_pvMn_pv";             // set layer
+var urlStr = serverStr + "/" + projectStr + "AlCu_pvMn_pv/T0001.A2BC/"; // caolculation layer
 // url: "https://api.bart.gov/api/stn.aspx",
 
 getStations(urlStr);
