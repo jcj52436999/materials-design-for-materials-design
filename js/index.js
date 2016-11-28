@@ -155,6 +155,31 @@ var getStations = function(urlStr) {
   });
 };
 
+var getPlanetData = function(url) {
+  $.ajax({
+    url: url,
+    success: function(result) {
+      console.log(result);
+      if ("copyright" in result) {
+        $("#copyright").text("Image Credits: " + result.copyright);
+      } else {
+        $("#copyright").text("Image Credits: " + "Public Domain");
+      }
+
+      if (result.media_type == "video") {
+        $("#apod_img_id").css("display", "none");
+        $("#apod_vid_id").attr("src", result.url);
+      } else {
+        $("#apod_vid_id").css("display", "none");
+        $("#apod_img_id").attr("src", result.url);
+      }
+      $("#reqObject").text(url);
+      $("#returnObject").text(JSON.stringify(result, null, 4));
+      $("#apod_explaination").text(result.explanation);
+      $("#apod_title").text(result.title);
+    }
+  });
+};
 /*
 SERVER=’http://aflowlib.duke.edu’	# server name
 PROJECT=’AFLOWDATA/LIB3_RAW/’	# project name
@@ -162,14 +187,23 @@ PROJECT=’AFLOWDATA/LIB3_RAW/’	# project name
 #URL=SERVER+’/’+PROJECT+’AlCu_pvMn_pv/’	# set-layer
 URL=SERVER+’/’+PROJECT+’AlCu_pvMn_pv/T0001.A2BC/’
 */
+/*
+https://data.nasa.gov/resource/r588-f7pr.json
 
-var serverStr = "http://aflowlib.duke.edu";	  // # server name
-var projectStr = "AFLOWDATA/LIB3_RAW/";	  // # project name
+https://api.nasa.gov/planetary/apod?api_key=Iz3uOqJpvuFIYDv2zsmiug9uuc5P0oWIQdrhYuQy
+*/
+
+// url: "https://api.bart.gov/api/stn.aspx",
+// var serverStr = "http://aflowlib.duke.edu";	  // # server name
+// var projectStr = "AFLOWDATA/LIB3_RAW/";	  // # project name
 // var urlStr = serverStr + "/" + projectStr                               // project layer
 // var urlStr = serverStr + "/" + projectStr + "AlCu_pvMn_pv";             // set layer
-var urlStr = serverStr + "/" + projectStr + "AlCu_pvMn_pv/T0001.A2BC/"; // caolculation layer
-// url: "https://api.bart.gov/api/stn.aspx",
+// var urlStr = serverStr + "/" + projectStr + "AlCu_pvMn_pv/T0001.A2BC/"; // caolculation layer
 
-getStations(urlStr);
+// var urlStr = "https://data.nasa.gov/resource/r588-f7pr.json";
+var urlStr = "https://api.nasa.gov/planetary/apod?api_key=Iz3uOqJpvuFIYDv2zsmiug9uuc5P0oWIQdrhYuQy";
 
-$("#pick-station").change(findDepartures);
+// getStations(urlStr);
+getPlanetData(urlStr);
+
+// $("#pick-station").change(findDepartures);
