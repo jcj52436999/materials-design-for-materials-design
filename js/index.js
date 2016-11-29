@@ -155,11 +155,14 @@ var getStations = function(urlStr) {
   });
 };
 
+var planetResultDatasetGlobalGrab = "";
+
 var getPlanetData = function(url) {
   $.ajax({
     url: url,
     success: function(result) {
-      console.log(result);
+      planetResultDatasetGlobalGrab = result;
+      console.log(planetResultDatasetGlobalGrab);  // console.log(result);
       if ("copyright" in result) {
         $("#copyright").text("Image Credits: " + result.copyright);
       } else {
@@ -177,6 +180,7 @@ var getPlanetData = function(url) {
       $("#returnObject").text(JSON.stringify(result, null, 4));
       $("#apod_explaination").text(result.explanation);
       $("#apod_title").text(result.title);
+      $("#resultDataset").text(JSON.stringify(planetResultDatasetGlobalGrab, null, 4));
     }
   });
 };
